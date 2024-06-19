@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  theatre-db:
+    image: postgres:14
+    container_name: school-db
+    restart: always
+    volumes:
+      - ./school.ddl:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.env
+
+volumes:
+  content_db:
